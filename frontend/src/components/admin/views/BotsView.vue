@@ -434,6 +434,161 @@ const {
       </Form>
 
       <Form
+        v-else-if="botSettingsModal.platform === 'qx'"
+        layout="vertical"
+        class="bot-settings-modal-form"
+      >
+        <Form.Item label="启用千寻" html-for="bot-qx-enable">
+          <Switch id="bot-qx-enable" v-model:checked="botSettings.form.qx_enable" />
+        </Form.Item>
+        <Form.Item
+          label="千寻 HTTPAPI 地址"
+          html-for="bot-qx-http-api"
+          extra="千寻框架 HTTPAPI 插件地址，默认 http://127.0.0.1:7777/qianxun/httpapi"
+        >
+          <Input
+            id="bot-qx-http-api"
+            v-model:value="botSettings.form.qx_http_api"
+            placeholder="http://127.0.0.1:7777/qianxun/httpapi"
+          />
+        </Form.Item>
+        <Form.Item label="安全密钥 safe_key" html-for="bot-qx-safe-key">
+          <Input.Password
+            id="bot-qx-safe-key"
+            v-model:value="botSettings.form.qx_safe_key"
+            placeholder="千寻 HTTPAPI 的 safe_key"
+          />
+        </Form.Item>
+        <Form.Item
+          label="回调 Webhook Key"
+          html-for="bot-qx-webhook-key"
+          extra="千寻框架回调地址中的 key 参数，配合 /qx/webhook 使用"
+        >
+          <Input.Password
+            id="bot-qx-webhook-key"
+            v-model:value="botSettings.form.qx_webhook_key"
+          />
+        </Form.Item>
+        <Form.Item label="机器人 wxid" html-for="bot-qx-bot-wxid">
+          <Input
+            id="bot-qx-bot-wxid"
+            v-model:value="botSettings.form.qx_bot_wxid"
+            placeholder="wxid_xxxxxx"
+          />
+        </Form.Item>
+        <Form.Item label="调试日志" html-for="bot-qx-debug">
+          <Switch id="bot-qx-debug" v-model:checked="botSettings.form.qx_debug" />
+        </Form.Item>
+      </Form>
+
+      <Form
+        v-else-if="botSettingsModal.platform === 'kpeng'"
+        layout="vertical"
+        class="bot-settings-modal-form"
+      >
+        <Form.Item label="启用鲲鹏" html-for="bot-kpeng-enable">
+          <Switch id="bot-kpeng-enable" v-model:checked="botSettings.form.kpeng_enable" />
+        </Form.Item>
+        <Form.Item label="连接模式" html-for="bot-kpeng-mode">
+          <Select
+            id="bot-kpeng-mode"
+            v-model:value="botSettings.form.kpeng_mode"
+            :options="[
+              { label: 'HTTP', value: 'http' },
+              { label: 'WebSocket', value: 'ws' },
+            ]"
+          />
+        </Form.Item>
+        <Form.Item
+          v-if="botSettings.form.kpeng_mode === 'http'"
+          label="HTTP API 地址"
+          html-for="bot-kpeng-http-api"
+          extra="默认 http://127.0.0.1:2022/KP，配合 X-KP-Key 请求头鉴权"
+        >
+          <Input
+            id="bot-kpeng-http-api"
+            v-model:value="botSettings.form.kpeng_http_api"
+            placeholder="http://127.0.0.1:2022/KP"
+          />
+        </Form.Item>
+        <Form.Item
+          v-if="botSettings.form.kpeng_mode === 'http'"
+          label="HTTP Key"
+          html-for="bot-kpeng-http-key"
+        >
+          <Input.Password
+            id="bot-kpeng-http-key"
+            v-model:value="botSettings.form.kpeng_http_key"
+          />
+        </Form.Item>
+        <Form.Item
+          v-if="botSettings.form.kpeng_mode === 'ws'"
+          label="WebSocket 地址"
+          html-for="bot-kpeng-ws-url"
+          extra="默认 ws://127.0.0.1:2023"
+        >
+          <Input
+            id="bot-kpeng-ws-url"
+            v-model:value="botSettings.form.kpeng_ws_url"
+            placeholder="ws://127.0.0.1:2023"
+          />
+        </Form.Item>
+        <Form.Item label="回调 Webhook Key" html-for="bot-kpeng-webhook-key">
+          <Input.Password
+            id="bot-kpeng-webhook-key"
+            v-model:value="botSettings.form.kpeng_webhook_key"
+          />
+        </Form.Item>
+        <Form.Item label="机器人 wxid" html-for="bot-kpeng-bot-wxid">
+          <Input
+            id="bot-kpeng-bot-wxid"
+            v-model:value="botSettings.form.kpeng_bot_wxid"
+            placeholder="wxid_xxxxxx"
+          />
+        </Form.Item>
+        <Form.Item label="调试日志" html-for="bot-kpeng-debug">
+          <Switch id="bot-kpeng-debug" v-model:checked="botSettings.form.kpeng_debug" />
+        </Form.Item>
+      </Form>
+
+      <Form
+        v-else-if="botSettingsModal.platform === 'qw'"
+        layout="vertical"
+        class="bot-settings-modal-form"
+      >
+        <Form.Item label="启用企业微信 AiBot" html-for="bot-qw-enable">
+          <Switch id="bot-qw-enable" v-model:checked="botSettings.form.qw_enable" />
+        </Form.Item>
+        <Form.Item label="Bot ID" html-for="bot-qw-bot-id">
+          <Input
+            id="bot-qw-bot-id"
+            v-model:value="botSettings.form.qw_bot_id"
+            placeholder="企业微信智能机器人 ID"
+          />
+        </Form.Item>
+        <Form.Item label="Secret" html-for="bot-qw-secret">
+          <Input.Password
+            id="bot-qw-secret"
+            v-model:value="botSettings.form.qw_secret"
+          />
+        </Form.Item>
+        <Form.Item
+          label="公网 Hostname"
+          html-for="bot-qw-hostname"
+          extra="用于媒体文件公网回链，例如 https://media.example.com"
+        >
+          <Input
+            id="bot-qw-hostname"
+            v-model:value="botSettings.form.qw_hostname"
+            placeholder="https://your-domain.com"
+          />
+        </Form.Item>
+        <Form.Item label="调试日志" html-for="bot-qw-debug">
+          <Switch id="bot-qw-debug" v-model:checked="botSettings.form.qw_debug" />
+        </Form.Item>
+      </Form>
+
+      <Form
         v-else-if="botSettingsModal.platform === 'web'"
         layout="vertical"
         class="bot-settings-modal-form"

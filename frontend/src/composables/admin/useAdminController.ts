@@ -283,6 +283,9 @@ export function useAdminController() {
       { platform: "web", label: "Web Bot" },
       { platform: "telegram", label: "Telegram Bot" },
       { platform: "flowbot", label: "FlowBot 微信" },
+      { platform: "qx", label: "千寻微信 Pro" },
+      { platform: "kpeng", label: "鲲鹏微信机器人" },
+      { platform: "qw", label: "企业微信 AiBot" },
     ];
     const rows = new Map(
       (user.value?.adapters || []).map((item) => [item.platform, item]),
@@ -2267,6 +2270,11 @@ export function useAdminController() {
     pagermaid_debug: boolean;
     flowbot_enable: boolean; flowbot_token: string; flowbot_host: string;
     flowbot_port: string; flowbot_tls: boolean; flowbot_debug: boolean;
+    qx_enable: boolean; qx_http_api: string; qx_safe_key: string; qx_webhook_key: string;
+    qx_bot_wxid: string; qx_debug: boolean;
+    kpeng_enable: boolean; kpeng_mode: string; kpeng_http_api: string; kpeng_http_key: string;
+    kpeng_webhook_key: string; kpeng_ws_url: string; kpeng_bot_wxid: string; kpeng_debug: boolean;
+    qw_enable: boolean; qw_bot_id: string; qw_secret: string; qw_hostname: string; qw_debug: boolean;
     web_chat_public: boolean;
   };
 
@@ -2277,7 +2285,7 @@ export function useAdminController() {
     | "dingtalk"
     | "qqguild"
     | "web"
-    | "pagermaid" | "flowbot";
+    | "pagermaid" | "flowbot" | "qx" | "kpeng" | "qw";
 
   type ClawbotLoginStart = {
     session: string;
@@ -2329,6 +2337,12 @@ export function useAdminController() {
       pagermaid_debug: false,
       flowbot_enable: true, flowbot_token: "", flowbot_host: "127.0.0.1",
       flowbot_port: "7400", flowbot_tls: false, flowbot_debug: false,
+      qx_enable: false, qx_http_api: "http://127.0.0.1:7777/qianxun/httpapi",
+      qx_safe_key: "", qx_webhook_key: "", qx_bot_wxid: "", qx_debug: false,
+      kpeng_enable: false, kpeng_mode: "http", kpeng_http_api: "http://127.0.0.1:2022/KP",
+      kpeng_http_key: "", kpeng_webhook_key: "", kpeng_ws_url: "ws://127.0.0.1:2023",
+      kpeng_bot_wxid: "", kpeng_debug: false,
+      qw_enable: false, qw_bot_id: "", qw_secret: "", qw_hostname: "", qw_debug: false,
       web_chat_public: false,
     } as BotSettingsForm,
   });
@@ -2596,6 +2610,19 @@ export function useAdminController() {
         flowbot_enable: boolSetting(data["flowbot.enable"], true), flowbot_token: data["flowbot.token"] || "",
         flowbot_host: data["flowbot.host"] || "127.0.0.1", flowbot_port: data["flowbot.port"] != null ? String(data["flowbot.port"]) : "7400",
         flowbot_tls: boolSetting(data["flowbot.tls"]), flowbot_debug: boolSetting(data["flowbot.debug"]),
+        qx_enable: boolSetting(data["qx.enable"]),
+        qx_http_api: data["qx.http_api"] || "http://127.0.0.1:7777/qianxun/httpapi",
+        qx_safe_key: data["qx.safe_key"] || "", qx_webhook_key: data["qx.webhook_key"] || "",
+        qx_bot_wxid: data["qx.bot_wxid"] || "", qx_debug: boolSetting(data["qx.debug"]),
+        kpeng_enable: boolSetting(data["kpeng.enable"]),
+        kpeng_mode: data["kpeng.mode"] === "ws" ? "ws" : "http",
+        kpeng_http_api: data["kpeng.http_api"] || "http://127.0.0.1:2022/KP",
+        kpeng_http_key: data["kpeng.http_key"] || "", kpeng_webhook_key: data["kpeng.webhook_key"] || "",
+        kpeng_ws_url: data["kpeng.ws_url"] || "ws://127.0.0.1:2023",
+        kpeng_bot_wxid: data["kpeng.bot_wxid"] || "", kpeng_debug: boolSetting(data["kpeng.debug"]),
+        qw_enable: boolSetting(data["qw.enable"]),
+        qw_bot_id: data["qw.bot_id"] || "", qw_secret: data["qw.secret"] || "",
+        qw_hostname: data["qw.hostname"] || "", qw_debug: boolSetting(data["qw.debug"]),
         web_chat_public: boolSetting(data["sillyGirl.web_chat_public"]),
       });
     } finally {
@@ -2656,6 +2683,16 @@ export function useAdminController() {
         "flowbot.enable": !!v.flowbot_enable, "flowbot.token": v.flowbot_token || "",
         "flowbot.host": v.flowbot_host || "127.0.0.1", "flowbot.port": Number(v.flowbot_port) || 7400,
         "flowbot.tls": !!v.flowbot_tls, "flowbot.debug": !!v.flowbot_debug,
+        "qx.enable": !!v.qx_enable, "qx.http_api": v.qx_http_api || "http://127.0.0.1:7777/qianxun/httpapi",
+        "qx.safe_key": v.qx_safe_key || "", "qx.webhook_key": v.qx_webhook_key || "",
+        "qx.bot_wxid": v.qx_bot_wxid || "", "qx.debug": !!v.qx_debug,
+        "kpeng.enable": !!v.kpeng_enable, "kpeng.mode": v.kpeng_mode === "ws" ? "ws" : "http",
+        "kpeng.http_api": v.kpeng_http_api || "http://127.0.0.1:2022/KP",
+        "kpeng.http_key": v.kpeng_http_key || "", "kpeng.webhook_key": v.kpeng_webhook_key || "",
+        "kpeng.ws_url": v.kpeng_ws_url || "ws://127.0.0.1:2023",
+        "kpeng.bot_wxid": v.kpeng_bot_wxid || "", "kpeng.debug": !!v.kpeng_debug,
+        "qw.enable": !!v.qw_enable, "qw.bot_id": v.qw_bot_id || "", "qw.secret": v.qw_secret || "",
+        "qw.hostname": v.qw_hostname || "", "qw.debug": !!v.qw_debug,
         "sillyGirl.web_chat_public": !!v.web_chat_public,
       });
       message.success("BOT 配置已保存");
@@ -2679,6 +2716,9 @@ export function useAdminController() {
     if (platform === "qqguild") return "qqguild_enable";
     if (platform === "pagermaid") return "pagermaid_enable";
     if (platform === "flowbot") return "flowbot_enable";
+    if (platform === "qx") return "qx_enable";
+    if (platform === "kpeng") return "kpeng_enable";
+    if (platform === "qw") return "qw_enable";
     return "";
   }
 
