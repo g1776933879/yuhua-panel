@@ -1,3 +1,149 @@
+/* ============================================================
+   青玄面板主题（羽化风格移植版）
+   设计令牌提取自羽化面板 v1.1.2 前端产物
+   主色 #5ab4c4 青蓝 / 渐变 #7cc4d6→#8fb6e4 / 圆角14px / 卡片玻璃感
+   ============================================================ */
+:root {
+  --c-primary: #5ab4c4;
+  --c-primary-deep: #3d95a8;
+  --c-secondary: #7aa5d8;
+  --c-gradient: linear-gradient(135deg, #7cc4d6, #8fb6e4);
+  --c-gradient-soft: linear-gradient(135deg, #a3d6e4, #b8cdf0);
+  --c-bg: linear-gradient(180deg, #f7fbfc 0%, #f5f8fd 100%);
+  --c-text: #1f2937;
+  --c-text-muted: #6b7280;
+  --c-border: #e3f0f3;
+  --c-card-border: #e8f1f4;
+  --c-card: rgba(255, 255, 255, 0.9);
+  --c-radius: 14px;
+  --sh-card: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 1px 2px rgba(15, 23, 42, 0.04),
+    0 6px 20px rgba(15, 23, 42, 0.05);
+  --sh-card-hover: inset 0 1px 0 rgba(255, 255, 255, 1), 0 4px 10px rgba(15, 23, 42, 0.05),
+    0 16px 36px rgba(90, 180, 196, 0.16);
+  --t-med: 0.24s;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 全局背景：青玄渐变 + 光晕 */
+body {
+  background: var(--c-bg) !important;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: -120px;
+  right: -80px;
+  z-index: 0;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(124, 196, 214, 0.08), transparent 70%);
+}
+#root,
+.shell {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ant Design 组件主色覆盖（青蓝主题） */
+.ant-btn-primary {
+  background: var(--c-gradient) !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(90, 180, 196, 0.35) !important;
+  transition: transform var(--t-med) var(--ease-out), box-shadow var(--t-med) var(--ease-out);
+}
+.ant-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(90, 180, 196, 0.45) !important;
+}
+.ant-btn-primary:active {
+  transform: translateY(0);
+}
+.ant-switch-checked {
+  background: var(--c-gradient) !important;
+}
+.ant-checkbox-checked .ant-checkbox-inner,
+.ant-radio-checked .ant-radio-inner {
+  border-color: var(--c-primary) !important;
+  background-color: var(--c-primary) !important;
+}
+.ant-menu-item-selected {
+  background: linear-gradient(90deg, rgba(124, 196, 214, 0.18), rgba(143, 182, 228, 0.08)) !important;
+  border-right: 3px solid var(--c-primary);
+  color: var(--c-primary-deep) !important;
+  font-weight: 600;
+}
+.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: var(--c-primary-deep) !important;
+}
+.ant-tabs-ink-bar {
+  background: var(--c-gradient) !important;
+}
+.ant-pagination-item-active {
+  border-color: var(--c-primary) !important;
+}
+.ant-pagination-item-active a {
+  color: var(--c-primary-deep) !important;
+}
+a {
+  color: var(--c-primary-deep);
+}
+.ant-input:focus,
+.ant-input-focused,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+  border-color: var(--c-primary) !important;
+  box-shadow: 0 0 0 2px rgba(90, 180, 196, 0.15) !important;
+}
+.ant-select-focused .ant-select-selector {
+  border-color: var(--c-primary) !important;
+  box-shadow: 0 0 0 2px rgba(90, 180, 196, 0.15) !important;
+}
+
+/* 卡片玻璃质感 */
+.ant-card {
+  border: 1px solid var(--c-card-border) !important;
+  border-radius: var(--c-radius) !important;
+  background: var(--c-card) !important;
+  backdrop-filter: blur(8px);
+  box-shadow: var(--sh-card) !important;
+  transition: box-shadow var(--t-med) var(--ease-out), transform var(--t-med) var(--ease-out);
+}
+.ant-card:hover {
+  box-shadow: var(--sh-card-hover) !important;
+}
+.ant-modal-content {
+  border-radius: 16px !important;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18) !important;
+}
+
+/* 页面进入动画（羽化同款 fadeInUp） */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+section.panel,
+.panel > .ant-card {
+  animation: fadeInUp 0.24s var(--ease-out) both;
+}
+
+/* 品牌名用衬线展示字体感 */
+.brand-name,
+.app-brand span:last-child {
+  background: var(--c-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
 * {
   box-sizing: border-box;
 }

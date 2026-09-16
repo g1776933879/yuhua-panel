@@ -327,6 +327,9 @@ func overviewAdapterStatuses() []map[string]interface{} {
 		{Platform: "qqguild", Label: "QQ 官方频道机器人"},
 		{Platform: "web", Label: "Web Bot"},
 		{Platform: "telegram", Label: "Telegram Bot"},
+		{Platform: "qx", Label: "千寻微信 Pro"},
+		{Platform: "kpeng", Label: "鲲鹏微信机器人"},
+		{Platform: "qw", Label: "企业微信 AiBot"},
 	}
 	rows := []map[string]interface{}{}
 	for _, item := range platforms {

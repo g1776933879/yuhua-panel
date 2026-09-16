@@ -32,6 +32,9 @@ var adminBotSettingsKeys = []string{
 	"dingtalk.enable", "dingtalk.client_id", "dingtalk.client_secret", "dingtalk.debug",
 	"qqguild.enable", "qqguild.mode", "qqguild.app_id", "qqguild.app_secret", "qqguild.sandbox", "qqguild.debug",
 	"pagermaid.enable", "pagermaid.token", "pagermaid.debug",
+	"qx.enable", "qx.http_api", "qx.safe_key", "qx.webhook_key", "qx.bot_wxid", "qx.debug",
+	"kpeng.enable", "kpeng.mode", "kpeng.http_api", "kpeng.http_key", "kpeng.webhook_key", "kpeng.ws_url", "kpeng.bot_wxid", "kpeng.debug",
+	"qw.enable", "qw.bot_id", "qw.secret", "qw.hostname", "qw.debug",
 	"sillyGirl.web_chat_public",
 }
 
