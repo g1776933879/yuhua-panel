@@ -24,5 +24,12 @@ bash toolbox/plugin-download.sh all              # 下载全部
 YUHUA_PLUGIN_REPO=g1776933879/yuhua-panel bash toolbox/plugin-download.sh all
 ```
 
-## 3. 组合编排示例（docker-compose.yml）
+## 3. ZeroTermux 一键部署（双 Python 可选）
+```bash
+bash toolbox/yuhua-termux-install.sh          # 交互式: 选 3.12/3.14 共存
+PYBIN=python3.14 ~/yuhua-panel/start.sh       # 运行时切版本
+USE_PROOT=1 ~/yuhua-panel/start.sh            # SIGSYS 兜底模式
+```
+
+## 4. 组合编排示例（docker-compose.yml）
 面板 + 多个业务容器统一管理，参考仓库根目录 `docker-compose.yml`。
