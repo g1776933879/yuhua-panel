@@ -1889,3 +1889,131 @@ a.ant-typography,
 .ant-menu-light .ant-menu-item-selected {
   color: #0958d9 !important;
 }
+
+
+/* ============================================================
+   羽化布局风格深度移植 II —— 顶栏/侧栏/品牌章/欢迎页
+   ============================================================ */
+
+/* 顶栏：羽化同款毛玻璃 + 顶部光线 */
+.topbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  padding: 0 20px;
+  background: linear-gradient(180deg, #f7fbfceb, #f5f8fdeb);
+  border-bottom: 1px solid var(--c-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.topbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(122, 196, 214, 0.55), transparent);
+  pointer-events: none;
+}
+.topbar-title-text,
+.topbar-heading .ant-typography {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+/* 侧边栏：白玻璃 + 渐变品牌章 */
+.desktop-sider {
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-right: 1px solid var(--c-border);
+}
+.brand .app-brand-mark {
+  background: var(--c-gradient) !important;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(122, 196, 214, 0.24);
+  font-weight: 700;
+}
+
+/* 菜单项圆角化 + 间距 */
+.desktop-sider .ant-menu {
+  background: transparent !important;
+  padding: 0 8px;
+}
+.desktop-sider .ant-menu-item {
+  border-radius: 10px !important;
+  margin-block: 4px;
+  transition: background var(--t-med) var(--ease-out);
+}
+
+/* 欢迎页 hero 区 + 统计卡（羽化 welcome 风格） */
+.panel > .ant-typography h3 {
+  font-size: 22px;
+  font-weight: 700;
+}
+.ant-statistic .ant-statistic-content {
+  font-weight: 700;
+}
+.ant-card .ant-statistic-title {
+  color: var(--c-text-muted);
+  font-size: 13px;
+}
+
+/* 表格 hover 行高亮（青蓝淡染） */
+.ant-table-tbody > tr.ant-table-row:hover > td {
+  background: rgba(124, 196, 214, 0.07) !important;
+}
+.ant-table-thead > tr > th {
+  background: rgba(124, 196, 214, 0.08) !important;
+  color: var(--c-primary-deep);
+  font-weight: 600;
+}
+
+/* Tag 圆润化 */
+.ant-tag {
+  border-radius: 999px !important;
+  border: none !important;
+  padding-inline: 10px;
+}
+
+/* 消息气泡通知圆角 */
+.ant-message-notice-content {
+  border-radius: 12px !important;
+  box-shadow: var(--sh-card-hover) !important;
+}
+
+/* 空状态居中美化 */
+.ant-empty-description {
+  color: var(--c-text-muted);
+}
+
+/* 滚动条细化为青蓝 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(90, 180, 196, 0.35);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(90, 180, 196, 0.55);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 登录页（AdminAuth）渐变背景 + 卡片浮起 */
+.login-page,
+[class*="login"] .ant-card {
+  background: var(--c-bg);
+}
+.admin-auth-card,
+.login-card {
+  border-radius: 16px !important;
+  box-shadow: var(--sh-card-hover) !important;
+}
