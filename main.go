@@ -13,6 +13,7 @@ import (
 	_ "github.com/smallfawn/sillyGirl/adapters/dingtalk"
 	_ "github.com/smallfawn/sillyGirl/adapters/flowbot"
 	_ "github.com/smallfawn/sillyGirl/adapters/pagermaid"
+	_ "github.com/smallfawn/sillyGirl/adapters/qx"
 	_ "github.com/smallfawn/sillyGirl/adapters/qq"
 	_ "github.com/smallfawn/sillyGirl/adapters/qqguild"
 	_ "github.com/smallfawn/sillyGirl/adapters/telegram"
