@@ -14,6 +14,7 @@ import (
 	_ "github.com/smallfawn/sillyGirl/adapters/flowbot"
 	_ "github.com/smallfawn/sillyGirl/adapters/pagermaid"
 	_ "github.com/smallfawn/sillyGirl/adapters/kpeng"
+	_ "github.com/smallfawn/sillyGirl/adapters/qw"
 	_ "github.com/smallfawn/sillyGirl/adapters/qx"
 	_ "github.com/smallfawn/sillyGirl/adapters/qq"
 	_ "github.com/smallfawn/sillyGirl/adapters/qqguild"
