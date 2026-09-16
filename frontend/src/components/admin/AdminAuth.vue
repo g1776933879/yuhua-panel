@@ -59,7 +59,7 @@ const {
       </template>
       <template v-else>
         <Typography.Title :level="3" style="margin-top: 0"
-          >SillyGirl Admin</Typography.Title
+          >青玄面板 Admin</Typography.Title
         >
         <Typography.Paragraph class="muted"
           >使用后台账号和密码登录。</Typography.Paragraph

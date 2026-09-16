@@ -55,3 +55,5 @@ security-pentest/
 .tmp-*.log
 **/__pycache__/
 /skills.md
+sillygirl
+sg*.log

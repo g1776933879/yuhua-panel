@@ -223,7 +223,7 @@ onMounted(() => {
                   <Tag color="green">服务运行中</Tag>
                   <Tag>Vue 页面</Tag>
                 </Space>
-                <Typography.Title :level="1" class="home-title">SillyGirl 用户服务入口</Typography.Title>
+                <Typography.Title :level="1" class="home-title">青玄面板 用户服务入口</Typography.Title>
                 <Typography.Paragraph class="home-lead">
                   面向普通用户的统一入口。这里用于账号注册、登录和查看服务能力，后续可扩展个人资料、授权状态、积分记录和消息通知。
                 </Typography.Paragraph>

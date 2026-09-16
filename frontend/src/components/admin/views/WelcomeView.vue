@@ -33,7 +33,7 @@ const {
 <template>
   <section v-if="page === 'welcome'" class="panel">
     <Typography.Title :level="3" style="margin-top: 0">{{
-      user?.name || "傻妞"
+      user?.name || "青玄"
     }}</Typography.Title>
     <Space wrap style="margin-bottom: 14px">
       <Tag color="blue">当前版本 {{ overviewVersion.local }}</Tag>

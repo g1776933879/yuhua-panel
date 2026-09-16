@@ -441,7 +441,7 @@ const {
         <Form.Item
           label="运行状态"
           html-for="bot-web-status"
-          extra="Web Bot 是内置适配器，随 SillyGirl 自动启动。"
+          extra="Web Bot 是内置适配器，随 青玄面板 自动启动。"
         >
           <Switch id="bot-web-status" :checked="true" disabled />
         </Form.Item>

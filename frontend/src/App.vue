@@ -93,7 +93,7 @@ const activeView = computed(() => adminViews[page.value] || adminViews.welcome);
                   menuItems.find((item) => item.key === page)?.label || "后台"
                 }}</Typography.Text>
                 <Typography.Text class="muted" style="margin-left: 10px">{{
-                  user?.name || "傻妞"
+                  user?.name || "青玄"
                 }}</Typography.Text>
               </div>
             </div>
