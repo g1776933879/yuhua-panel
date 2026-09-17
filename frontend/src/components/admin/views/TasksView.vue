@@ -4,7 +4,8 @@ import Form from "ant-design-vue/es/form";
 import Input from "ant-design-vue/es/input";
 import Modal from "ant-design-vue/es/modal";
 import { computed } from "vue";
-import { Play, Plus, RefreshCw, Trash2 } from "lucide-vue-next";
+import { Play, Plus, RefreshCw, Trash2,
+  ListChecks,} from "lucide-vue-next";
 import Popconfirm from "ant-design-vue/es/popconfirm";
 import Select from "ant-design-vue/es/select";
 import Switch from "ant-design-vue/es/switch";
@@ -78,6 +79,13 @@ function fillTrigger(ruleText: string) {
 
 <template>
   <section v-if="page === 'tasks'" class="panel">
+    <div class="page-hero">
+      <div class="page-hero-icon hi-tasks"><ListChecks :size="26" /></div>
+      <div class="page-hero-title">
+        <h2>定时任务</h2>
+        <span class="page-hero-subtitle">计划任务调度管理</span>
+      </div>
+    </div>
     <div class="toolbar-left" style="margin-bottom: 12px">
       <Button type="primary" @click="openTask(); ensurePluginRules()"
         ><template #icon><Plus :size="16" /></template>新增定时任务</Button

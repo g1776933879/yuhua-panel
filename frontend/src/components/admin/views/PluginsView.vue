@@ -13,7 +13,7 @@ import {
   Sun,
   Trash2,
   Wand2,
-} from "lucide-vue-next";
+  Puzzle,} from "lucide-vue-next";
 import Button from "ant-design-vue/es/button";
 import Empty from "ant-design-vue/es/empty";
 import Form from "ant-design-vue/es/form";
@@ -95,6 +95,13 @@ const {
 
 <template>
   <section v-if="page === 'plugins'" class="panel">
+    <div class="page-hero">
+      <div class="page-hero-icon hi-plugins"><Puzzle :size="26" /></div>
+      <div class="page-hero-title">
+        <h2>插件市场</h2>
+        <span class="page-hero-subtitle">浏览、安装与管理插件</span>
+      </div>
+    </div>
     <Tabs v-model:active-key="plugins.tab">
       <TabPane key="all" :tab="`全部 ${plugins.meta.all ?? ''}`" />
       <TabPane key="latest" :tab="`最新发布 ${plugins.meta.latest ?? ''}`" />

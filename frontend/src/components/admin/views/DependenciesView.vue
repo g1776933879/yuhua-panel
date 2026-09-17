@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Button from "ant-design-vue/es/button";
-import { Download, RefreshCw, Trash2 } from "lucide-vue-next";
+import { Download, RefreshCw, Trash2,
+  PackageOpen,} from "lucide-vue-next";
 import Empty from "ant-design-vue/es/empty";
 import Input from "ant-design-vue/es/input";
 import Popconfirm from "ant-design-vue/es/popconfirm";
@@ -34,6 +35,13 @@ const {
 
 <template>
   <section v-if="page === 'dependencies'" class="panel">
+    <div class="page-hero">
+      <div class="page-hero-icon hi-dependencies"><PackageOpen :size="26" /></div>
+      <div class="page-hero-title">
+        <h2>依赖管理</h2>
+        <span class="page-hero-subtitle">插件运行环境与依赖源</span>
+      </div>
+    </div>
     <div class="toolbar">
       <div class="toolbar-left">
         <Typography.Text class="muted"

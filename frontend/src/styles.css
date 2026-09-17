@@ -2017,3 +2017,104 @@ a.ant-typography,
   border-radius: 16px !important;
   box-shadow: var(--sh-card-hover) !important;
 }
+
+/* ============================================================
+   羽化页面 Hero 移植 III —— 每页专属图标配色 + 标题渐变 + 副标题
+   ============================================================ */
+.page-hero {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  background: linear-gradient(135deg, #f0fdfaf5, #eff6fff5);
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: -60px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.14), transparent 70%);
+  pointer-events: none;
+}
+.page-hero-icon {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  flex: 0 0 auto;
+  color: #fff;
+  background: var(--c-gradient);
+  border-radius: 14px;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.35), 0 6px 16px rgba(6, 182, 212, 0.3);
+  animation: heroIconPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes heroIconPop {
+  from { transform: scale(0.55); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.page-hero-title {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+.page-hero-title h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  background: linear-gradient(120deg, #1f2937 35%, #3d95a8 75%, #5a7fd8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.page-hero-subtitle {
+  color: var(--c-text-muted);
+  font-size: 13px;
+}
+/* 每页专属图标渐变（羽化原版配色） */
+.page-hero-icon.hi-welcome { background: linear-gradient(135deg, #7cc4d6, #5aa8bc); }
+.page-hero-icon.hi-bots { background: linear-gradient(135deg, #4ade80, #22c55e); }
+.page-hero-icon.hi-plugins { background: linear-gradient(135deg, #93b4e8, #6a9cd8); }
+.page-hero-icon.hi-scripts { background: linear-gradient(135deg, #a78bfa, #8b5cf6); }
+.page-hero-icon.hi-dependencies { background: linear-gradient(135deg, #fb923c, #f97316); }
+.page-hero-icon.hi-plugin-logs { background: linear-gradient(135deg, #818cf8, #6366f1); }
+.page-hero-icon.hi-storage { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+.page-hero-icon.hi-message-tools { background: linear-gradient(135deg, #f472b6, #ec4899); }
+.page-hero-icon.hi-tasks { background: linear-gradient(135deg, #a78bfa, #7c3aed); }
+.page-hero-icon.hi-containers { background: linear-gradient(135deg, #94a3b8, #64748b); }
+.page-hero-icon.hi-users { background: linear-gradient(135deg, #22d3ee, #06b6d4); }
+.page-hero-icon.hi-settings { background: linear-gradient(135deg, #38bdf8, #0ea5e9); }
+
+/* panel 容器：羽化同款渐变白 + hover 光晕 */
+section.panel {
+  background: linear-gradient(180deg, #fffffff0, #fbfdfee6);
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--c-radius);
+  padding: 16px;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.85), 0 2px 6px rgba(15, 23, 42, 0.03),
+    0 6px 18px rgba(15, 23, 42, 0.04);
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+section.panel:hover {
+  border-color: rgba(122, 196, 214, 0.45);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.95), 0 10px 26px rgba(90, 180, 196, 0.09);
+}
+
+/* 内容区：羽化同款点阵纹理背景 */
+.content {
+  background-image: radial-gradient(rgba(90, 180, 196, 0.08) 1px, transparent 1.4px) !important;
+  background-size: 26px 26px;
+}
+
+/* 旧 toolbar 标题行弱化（hero 已承担标题职责） */
+.panel > .toolbar:first-of-type .toolbar-left svg {
+  color: var(--c-primary-deep);
+}

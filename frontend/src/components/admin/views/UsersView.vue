@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import Alert from "ant-design-vue/es/alert";
 import Button from "ant-design-vue/es/button";
-import { Edit3, Plus, RefreshCw, ShieldCheck, Trash2 } from "lucide-vue-next";
+import { Edit3, Plus, RefreshCw, ShieldCheck, Trash2,
+  UsersRound,} from "lucide-vue-next";
 import Form from "ant-design-vue/es/form";
 import Input from "ant-design-vue/es/input";
 import Modal from "ant-design-vue/es/modal";
@@ -35,6 +36,13 @@ const {
 
 <template>
   <section v-if="page === 'users'" class="panel">
+    <div class="page-hero">
+      <div class="page-hero-icon hi-users"><UsersRound :size="26" /></div>
+      <div class="page-hero-title">
+        <h2>用户管理</h2>
+        <span class="page-hero-subtitle">聊天用户与授权</span>
+      </div>
+    </div>
     <div class="toolbar">
       <div class="toolbar-left">
         <Typography.Text strong>普通用户</Typography.Text>

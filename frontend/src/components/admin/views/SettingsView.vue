@@ -2,7 +2,8 @@
 import Alert from "ant-design-vue/es/alert";
 import Button from "ant-design-vue/es/button";
 import Card from "ant-design-vue/es/card";
-import { Download, Plus, Save } from "lucide-vue-next";
+import { Download, Plus, Save,
+  Settings2,} from "lucide-vue-next";
 import Form from "ant-design-vue/es/form";
 import Input from "ant-design-vue/es/input";
 import InputNumber from "ant-design-vue/es/input-number";
@@ -64,6 +65,13 @@ const {
 
 <template>
   <section v-if="page === 'settings'" class="panel">
+    <div class="page-hero">
+      <div class="page-hero-icon hi-settings"><Settings2 :size="26" /></div>
+      <div class="page-hero-title">
+        <h2>系统设置</h2>
+        <span class="page-hero-subtitle">全局参数调整</span>
+      </div>
+    </div>
     <Form layout="vertical" style="max-width: 860px">
       <Form.Item label="后台账号名" html-for="settings-name"
         ><Input

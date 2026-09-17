@@ -54,6 +54,13 @@ const {
 
 <template>
   <section v-if="page === 'bots'" class="panel">
+    <div class="page-hero">
+      <div class="page-hero-icon hi-bots"><Bot :size="26" /></div>
+      <div class="page-hero-title">
+        <h2>BOT 对接管理</h2>
+        <span class="page-hero-subtitle">统一管理各平台机器人接入</span>
+      </div>
+    </div>
     <div class="toolbar">
       <div class="toolbar-left">
         <Bot :size="16" />

@@ -4,7 +4,8 @@ import Empty from "ant-design-vue/es/empty";
 import Form from "ant-design-vue/es/form";
 import Input from "ant-design-vue/es/input";
 import Modal from "ant-design-vue/es/modal";
-import { Plus, RefreshCw, Trash2 } from "lucide-vue-next";
+import { Plus, RefreshCw, Trash2,
+  Container,} from "lucide-vue-next";
 import Popconfirm from "ant-design-vue/es/popconfirm";
 import Segmented from "ant-design-vue/es/segmented";
 import Space from "ant-design-vue/es/space";
@@ -45,6 +46,13 @@ const {
 
 <template>
   <section v-if="page === 'containers'" class="panel">
+    <div class="page-hero">
+      <div class="page-hero-icon hi-containers"><Container :size="26" /></div>
+      <div class="page-hero-title">
+        <h2>容器面板</h2>
+        <span class="page-hero-subtitle">外部面板集成</span>
+      </div>
+    </div>
     <div class="toolbar">
       <div class="toolbar-left">
         <Segmented v-model:value="containerKind" :options="containerOptions" />

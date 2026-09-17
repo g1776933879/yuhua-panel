@@ -3,7 +3,8 @@ import Button from "ant-design-vue/es/button";
 import Form from "ant-design-vue/es/form";
 import Input from "ant-design-vue/es/input";
 import Modal from "ant-design-vue/es/modal";
-import { Plus, RefreshCw, Trash2 } from "lucide-vue-next";
+import { Plus, RefreshCw, Trash2,
+  Crown,} from "lucide-vue-next";
 import Popconfirm from "ant-design-vue/es/popconfirm";
 import Select from "ant-design-vue/es/select";
 import Table from "ant-design-vue/es/table";
@@ -16,6 +17,13 @@ const { loadMasters, masters, page, removeMaster, saveMaster } =
 
 <template>
   <section v-if="page === 'masters'" class="panel">
+    <div class="page-hero">
+      <div class="page-hero-icon hi-bots"><Crown :size="26" /></div>
+      <div class="page-hero-title">
+        <h2>管理员管理</h2>
+        <span class="page-hero-subtitle">管理员账号维护</span>
+      </div>
+    </div>
     <div class="toolbar-left" style="margin-bottom: 12px">
       <Button
         type="primary"

@@ -2,7 +2,8 @@
 import Alert from "ant-design-vue/es/alert";
 import Button from "ant-design-vue/es/button";
 import Card from "ant-design-vue/es/card";
-import { CloudDownload } from "lucide-vue-next";
+import { CloudDownload,
+  Sparkles,} from "lucide-vue-next";
 import Col from "ant-design-vue/es/col";
 import Modal from "ant-design-vue/es/modal";
 import Progress from "ant-design-vue/es/progress";
@@ -32,6 +33,13 @@ const {
 
 <template>
   <section v-if="page === 'welcome'" class="panel">
+    <div class="page-hero">
+      <div class="page-hero-icon hi-welcome"><Sparkles :size="26" /></div>
+      <div class="page-hero-title">
+        <h2>欢迎回来</h2>
+        <span class="page-hero-subtitle">青玄面板 · 一切尽在掌握</span>
+      </div>
+    </div>
     <Typography.Title :level="3" style="margin-top: 0">{{
       user?.name || "青玄"
     }}</Typography.Title>

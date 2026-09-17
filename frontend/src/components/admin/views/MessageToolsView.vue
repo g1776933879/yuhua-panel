@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Button from "ant-design-vue/es/button";
-import { Edit3, Plus, RefreshCw, Trash2 } from "lucide-vue-next";
+import { Edit3, Plus, RefreshCw, Trash2,
+  WandSparkles,} from "lucide-vue-next";
 import Form from "ant-design-vue/es/form";
 import Input from "ant-design-vue/es/input";
 import InputNumber from "ant-design-vue/es/input-number";
@@ -48,6 +49,13 @@ const {
 
 <template>
   <section v-if="page === 'message-tools'" class="panel">
+    <div class="page-hero">
+      <div class="page-hero-icon hi-message-tools"><WandSparkles :size="26" /></div>
+      <div class="page-hero-title">
+        <h2>消息工具</h2>
+        <span class="page-hero-subtitle">消息处理与工具集</span>
+      </div>
+    </div>
     <div class="toolbar">
       <div class="toolbar-left">
         <Segmented

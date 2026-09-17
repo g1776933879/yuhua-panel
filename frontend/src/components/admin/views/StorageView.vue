@@ -3,7 +3,8 @@ import Button from "ant-design-vue/es/button";
 import Form from "ant-design-vue/es/form";
 import Input from "ant-design-vue/es/input";
 import Modal from "ant-design-vue/es/modal";
-import { Plus, RefreshCw, Save, Search, Trash2 } from "lucide-vue-next";
+import { Plus, RefreshCw, Save, Search, Trash2,
+  Database,} from "lucide-vue-next";
 import Popconfirm from "ant-design-vue/es/popconfirm";
 import Select from "ant-design-vue/es/select";
 import Space from "ant-design-vue/es/space";
@@ -28,6 +29,13 @@ const {
 
 <template>
   <section v-if="page === 'storage'" class="panel">
+    <div class="page-hero">
+      <div class="page-hero-icon hi-storage"><Database :size="26" /></div>
+      <div class="page-hero-title">
+        <h2>存储管理</h2>
+        <span class="page-hero-subtitle">数据桶与键值浏览</span>
+      </div>
+    </div>
     <div class="toolbar-left" style="margin-bottom: 12px">
       <Select
         id="storage-bucket"
